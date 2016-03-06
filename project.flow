@@ -1,0 +1,32 @@
+{
+  luxe : {
+    window:{
+      width: 640,
+      height: 400,
+      resizable: false,
+      title: 'Voxel Load Test'
+    }
+  },
+
+  project : {
+    name : 'Voxel Load Test',
+    version : '1.0.0',
+    author : 'dj_pale',
+
+    app : {
+      name : 'voxel-load',
+      package : 'com.djpale.voxel',
+    },
+
+    build : {
+      defines:['phoenix_use_normals'],
+      dependencies : {
+        luxe : '*'
+      }
+    },
+
+    files : {
+      assets : 'assets/'
+    }
+  }
+}

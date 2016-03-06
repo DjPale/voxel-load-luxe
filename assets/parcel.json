@@ -1,0 +1,11 @@
+{
+    "textures" : [
+        { "id" : "assets/lninja2-test.png" }
+    ],
+    "text" : [
+        { "id" : "assets/lninja2-test.obj" }
+    ],
+    "shaders" : [
+        { "id" : "lit", "vert_id" : "assets/vert-lit.glsl", "frag_id" : "assets/frag-tex-lit.glsl" }
+    ]
+}
