@@ -57,7 +57,7 @@ class MainState extends State
     {
         shader = Luxe.resources.shader('lit');
         shader.set_vector3('lightpos', light);
-        shader.set_vector4('ambient', new Vector(0.2, 0.2, 0.2, 1.0));
+        shader.set_vector4('lightambient', new Vector(0.2, 0.2, 0.2, 1.0));
 
         var tex = Luxe.resources.texture('assets/lninja2-test.png');
         var mesh = new Mesh({
