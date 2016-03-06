@@ -11,7 +11,7 @@ class MainState extends State
     var batcher : phoenix.Batcher;
     var txt : Text;
     var ctrl_light : Bool = false;
-    var light : Vector = new Vector(300, 300, 100);
+    var light : Vector = new Vector(300, 300, 90);
     var shader : phoenix.Shader;
 
     public function new(_global:GlobalData, _batcher:phoenix.Batcher)
