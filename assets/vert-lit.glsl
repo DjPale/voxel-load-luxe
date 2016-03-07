@@ -14,6 +14,7 @@ uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
 uniform mat4 viewMatrix;
 uniform vec3 lightpos;
+uniform float specular;
 
 void main(void)
 {
@@ -28,7 +29,11 @@ void main(void)
     vec3 n = normalize(normal_cameraspace);
     vec3 l = normalize(lightdir_cameraspace);
 
-    diffuse = clamp(dot(n,l),0.0,1.0) ;
+    vec3 E = normalize(eyedir_cameraspace);
+    vec3 R = reflect(-l,n);
+
+    diffuse = clamp(dot(n,l),0.0,1.0) + pow(clamp(dot(E,R),0.0,1.0),specular);
+
     tcoord = vertexTCoord;
 
     gl_Position = pos;

@@ -13,6 +13,7 @@ class MainState extends State
     var ctrl_light : Bool = false;
     var light : Vector = new Vector(300, 300, 90);
     var shader : phoenix.Shader;
+    var spec : Float = 15.0;
 
     public function new(_global:GlobalData, _batcher:phoenix.Batcher)
     {
@@ -57,6 +58,7 @@ class MainState extends State
     {
         shader = Luxe.resources.shader('lit');
         shader.set_vector3('lightpos', light);
+        shader.set_float('specular', spec);
         shader.set_vector4('lightambient', new Vector(0.2, 0.2, 0.2, 1.0));
 
         var tex = Luxe.resources.texture('assets/lninja2-test.png');
@@ -91,6 +93,7 @@ class MainState extends State
             x = light.x;
             y = light.y;
             z = light.z;
+            fov = spec;
         }
 
         var sz = 50;
@@ -124,11 +127,11 @@ class MainState extends State
 
         if (Luxe.input.inputdown("fov+"))
         {
-            fov += sz * dt;
+            fov += 5 * dt;
         }
         else if (Luxe.input.inputdown("fov-"))
         {
-            fov -= sz * dt;
+            fov -= 5 * dt;
         }
 
         if (Luxe.input.inputdown("yr+"))
@@ -152,14 +155,15 @@ class MainState extends State
         if (ctrl_light)
         {
             light.set_xyz(x, y, z);
+            spec = fov;
             shader.set_vector3('lightpos', light);
+            shader.set_float('specular', spec);
         }
         else
         {
             Luxe.camera.pos.set_xyz(x, y, z);
+            Luxe.camera.view.fov = fov;
         }
-
-        Luxe.camera.view.fov = fov;
 
         Luxe.camera.rotation.setFromEuler(new Vector(xr, yr, 0).radians());
 
