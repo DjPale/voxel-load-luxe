@@ -2,14 +2,20 @@ import luxe.Input;
 import luxe.States;
 import luxe.Vector;
 
+import mint.Canvas;
+import mint.render.luxe.LuxeMintRender;
+import mint.layout.margins.Margins;
+
 typedef GlobalData = {
     states: States,
-    ui: phoenix.Batcher
+    ui: phoenix.Batcher,
+    canvas: Canvas,
+    layout: Margins
 }
 
 class Main extends luxe.Game
 {
-    var global : GlobalData = { states: null, ui: null };
+    var global : GlobalData = { states: null, ui: null, canvas: null, layout: null };
 
     override function config(config:luxe.AppConfig) : luxe.AppConfig
     {
@@ -51,9 +57,31 @@ class Main extends luxe.Game
         trace(Luxe.screen.size);
     }
 
+    function setup_canvas()
+    {
+        var renderer = new LuxeMintRender({
+            batcher: global.ui
+        });
+
+        var canvas = new util.AutoCanvas({
+            name: 'Canvas',
+            rendering: renderer,
+            x: 0, y: 0, w: Luxe.screen.w, h: Luxe.screen.h
+        });
+
+        canvas.auto_listen();
+
+        new mint.focus.Focus(canvas);
+
+        global.canvas = canvas;
+
+        global.layout = new Margins();
+    }
+
     function load_complete(_)
     {
         setup();
+        setup_canvas();
     }
 
     override function ready()

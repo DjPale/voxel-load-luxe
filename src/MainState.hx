@@ -72,6 +72,15 @@ class MainState extends State
         mesh.geometry.shader = shader;
     }
 
+    function setup_ui()
+    {
+        new mint.Slider({
+            x: 10, y: 10, w: 16, h: 16*4,
+            min: 0, max: 100,
+            parent: global.canvas
+        });
+    }
+
     var yr = 0.0;
     var xr = 0.0;
 
