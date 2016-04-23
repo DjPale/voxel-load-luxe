@@ -1,8 +1,8 @@
 {
   luxe : {
     window:{
-      width: 640,
-      height: 400,
+      width: 800,
+      height: 600,
       resizable: false,
       title: 'Voxel Load Test'
     }

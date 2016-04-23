@@ -12,7 +12,6 @@ varying float diffuse;
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
-uniform mat4 viewMatrix;
 uniform vec3 lightpos;
 uniform float specular;
 

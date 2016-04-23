@@ -11,7 +11,7 @@ class MainState extends State
     var batcher : phoenix.Batcher;
     var txt : Text;
     var ctrl_light : Bool = false;
-    var light : Vector = new Vector(300, 300, 90);
+    var light : Vector = new Vector(0, 150, 110);
     var shader : phoenix.Shader;
     var spec : Float = 15.0;
 
@@ -51,7 +51,7 @@ class MainState extends State
             aspect: Luxe.screen.w / Luxe.screen.h
         });
 
-        Luxe.camera.pos.set_xyz(280, 240, 45);
+        Luxe.camera.pos.set_xyz(-90, 40, 60);
     }
 
     function setup_mesh()
@@ -70,7 +70,6 @@ class MainState extends State
         });
 
         mesh.geometry.shader = shader;
-        mesh.transform.pos.set_xy(Luxe.screen.mid.x, Luxe.screen.mid.y);
     }
 
     var yr = 0.0;
